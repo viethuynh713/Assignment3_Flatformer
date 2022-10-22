@@ -9,6 +9,6 @@ Item::~Item()
 {
 }
 
-void Item::applyEffect() const
+void Item::applyEffect(const Player& i_player)
 {
 }

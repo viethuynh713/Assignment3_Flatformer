@@ -1,17 +1,10 @@
 #pragma once
-#include "IItem.h"
-#include "ItemEffect.h"
+#include "../Player/Player.h"
 #include "cocos2d.h"
 
-class Item : IItem {
+class Item{
 public:
-	void applyEffect() const override;
-private:
 	Item();
 	~Item();
-	
-	std::pair<float, float> m_position;
-	std::string m_itemId;
-	std::unique_ptr<ItemEffect> m_effect;
-	RECT m_hitBox;
+	virtual void applyEffect(const Player& i_player);
 };

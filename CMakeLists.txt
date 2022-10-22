@@ -63,11 +63,13 @@ file(GLOB GAME_HEADER "Classes/*/*.h")
 
 list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
-     Classes/HelloWorldScene.cpp
+     Classes/Game.cpp
+	 Classes/GameController.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
-     Classes/HelloWorldScene.h
+     Classes/Game.h
+	 Classes/GameController.h
      )
 
 if(ANDROID)

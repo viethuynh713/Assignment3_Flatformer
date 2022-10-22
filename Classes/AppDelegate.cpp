@@ -23,7 +23,7 @@
  ****************************************************************************/
 
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "Game.h"
 
 // #define USE_AUDIO_ENGINE 1
 
@@ -39,11 +39,11 @@ static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
 static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
 static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
 
-AppDelegate::AppDelegate()
+Flatformer::Flatformer()
 {
 }
 
-AppDelegate::~AppDelegate() 
+Flatformer::~Flatformer()
 {
 #if USE_AUDIO_ENGINE
     AudioEngine::end();
@@ -52,7 +52,7 @@ AppDelegate::~AppDelegate()
 
 // if you want a different context, modify the value of glContextAttrs
 // it will affect all platforms
-void AppDelegate::initGLContextAttrs()
+void Flatformer::initGLContextAttrs()
 {
     // set OpenGL context attributes: red,green,blue,alpha,depth,stencil,multisamplesCount
     GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8, 0};
@@ -67,7 +67,7 @@ static int register_all_packages()
     return 0; //flag for packages manager
 }
 
-bool AppDelegate::applicationDidFinishLaunching() {
+bool Flatformer::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
@@ -108,7 +108,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = Game::createScene();
 
     // run
     director->runWithScene(scene);
@@ -117,7 +117,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 }
 
 // This function will be called when the app is inactive. Note, when receiving a phone call it is invoked.
-void AppDelegate::applicationDidEnterBackground() {
+void Flatformer::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
 
 #if USE_AUDIO_ENGINE
@@ -126,7 +126,7 @@ void AppDelegate::applicationDidEnterBackground() {
 }
 
 // this function will be called when the app is active again
-void AppDelegate::applicationWillEnterForeground() {
+void Flatformer::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
 
 #if USE_AUDIO_ENGINE

@@ -4,5 +4,5 @@
 
 class EnemyAttackStrategy {
 public:
-	virtual void attack(std::pair<float, float>& m_position) = 0;
+	virtual void attack(const cocos2d::Vec2& m_position) = 0;
 };

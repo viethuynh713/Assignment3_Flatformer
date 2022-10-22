@@ -4,5 +4,7 @@
 
 class PlayerMeleeAttack : PlayerAttackStrategy {
 public:
-	void attack(std::pair<float, float>& i_position, const FaceDirection& m_faceDirection) override final;
+	PlayerMeleeAttack();
+	~PlayerMeleeAttack();
+	void attack(const cocos2d::Vec2& i_position, const MoveDirection& i_moveDirection) override;
 };

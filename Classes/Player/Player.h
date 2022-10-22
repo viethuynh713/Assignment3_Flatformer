@@ -1,25 +1,16 @@
 #pragma once
 #include "PlayerAttackContext.h"
-#include "PlayerAttackStrategy.h"
 #include "cocos2d.h"
-
-enum MoveDirection {
-	UP,
-	LEFT,
-	DOWN,
-	RIGHT
-};
-class FaceDirection {
-
-};
 
 class Player {
 public:
+	Player();
+	~Player();
 	void move(const MoveDirection& i_direction);
 	void attack();
 	void changeWeapon();
 	void changeHP();
-	void learnSkill(const PlayerAttackStrategy& i_skill);
+	void learnSkill();
 	void die();
 private:
 	enum State {
@@ -30,9 +21,10 @@ private:
 	
 	int m_lives;
 	int m_HP;
-	std::pair<float, float> m_position;
+	cocos2d::Vec2 m_position;
 	RECT m_hixBox;
 	float m_speed;
+	MoveDirection m_moveDirection;
 	int m_coin;
 	std::unique_ptr<PlayerAttackContext> m_playerAttackContext;
 	float m_timeNoDie;

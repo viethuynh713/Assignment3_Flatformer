@@ -37,6 +37,6 @@ int WINAPI _tWinMain(HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     // create the application instance
-    AppDelegate app;
+    Flatformer app;
     return Application::getInstance()->run();
 }

@@ -1,12 +1,14 @@
 #pragma once
-#include "Player.h"
+#pragma warning
+#include "PlayerAttackStrategy.h"
 #include "cocos2d.h"
-
 
 class PlayerAttackContext {
 public:
+	PlayerAttackContext();
+	~PlayerAttackContext();
 	void SetStrategy(const PlayerAttackStrategy& i_strategy);
-	void ExecuteStategy(std::pair<float, float>& i_position, const FaceDirection& i_faceDirection);
+	void ExecuteStategy(const cocos2d::Vec2& i_position, const MoveDirection& i_moveDirection);
 
 private:
 	std::unique_ptr<PlayerAttackStrategy> m_strategy;

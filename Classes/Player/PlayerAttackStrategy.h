@@ -1,8 +1,16 @@
 #pragma once
-#include "PlayerAttackContext.h"
+#pragma warning
+
 #include "cocos2d.h"
+enum class MoveDirection
+{
+	LEFT,
+	RIGHT
+};
 
 class PlayerAttackStrategy {
 public:
-	virtual void attack(std::pair<float, float>& i_position, const FaceDirection& m_faceDirection) = 0;
+	PlayerAttackStrategy();
+	~PlayerAttackStrategy();
+	virtual void attack(const cocos2d::Vec2& i_position, const MoveDirection& i_moveDirection) = 0;
 };

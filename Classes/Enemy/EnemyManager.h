@@ -1,13 +1,15 @@
 #pragma once
-#include "IEnemy.h"
+#include "Enemy.h"
 #include "cocos2d.h"
 
 
 class EnemyManager {
 public:
-	void RemoveEnemy(const IEnemy& i_enemy);
+	EnemyManager();
+	~EnemyManager();
+	void RemoveEnemy(const Enemy& i_enemy);
 	void Update();
-	void AddEnemy(const IEnemy& i_enemy);
+	void AddEnemy(const Enemy& i_enemy);
 private:
-	std::vector<IEnemy> m_enemys;
+	std::vector<Enemy> m_enemys;
 };

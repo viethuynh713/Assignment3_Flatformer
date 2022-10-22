@@ -3,7 +3,8 @@
 #include "EnemyAttackContext.h"
 #include "cocos2d.h"
 
-class IEnemy {
+__interface IEnemy
+{
 public:
 	virtual void die() = 0;
 	virtual void attack() = 0;

@@ -23,5 +23,6 @@ private:
 	};
 	std::unique_ptr<EnemyManager> m_enemyManager;
 	std::unique_ptr<ItemManager> m_itemManager;
+	std::unique_ptr<Player> m_player;
 	GameState m_gameState;
 };

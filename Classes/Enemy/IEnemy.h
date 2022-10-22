@@ -1,6 +1,6 @@
 #pragma once
 #include "../Player/Player.h"
-#include "EnemyAttackContext.h"
+#include "EnemySkillContext.h"
 #include "cocos2d.h"
 
 __interface IEnemy

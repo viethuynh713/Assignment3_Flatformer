@@ -16,3 +16,7 @@ void PlayerAttackContext::SetStrategy(const PlayerAttackStrategy& i_strategy)
 void PlayerAttackContext::ExecuteStategy(const cocos2d::Vec2& i_position, const MoveDirection& i_moveDirection)
 {
 }
+void PlayerAttackContext::ChangeSkill()
+{
+
+}

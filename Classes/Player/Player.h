@@ -1,7 +1,7 @@
 #pragma once
 #include "PlayerAttackContext.h"
 #include "cocos2d.h"
-
+using namespace cocos2d;
 class Player {
 public:
 	Player();
@@ -9,9 +9,11 @@ public:
 	void move(const MoveDirection& i_direction);
 	void attack();
 	void changeWeapon();
-	void changeHP();
+	void changeHP(int dental);
 	void learnSkill();
 	void die();
+	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event);
 private:
 	enum State {
 		JUMPING,
@@ -29,5 +31,6 @@ private:
 	std::unique_ptr<PlayerAttackContext> m_playerAttackContext;
 	float m_timeNoDie;
 	float m_jumpForce;
-	State m_state;
+	bool m_isSitting;
+	bool m_isJumping;
 };

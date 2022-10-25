@@ -9,8 +9,9 @@ public:
 	~PlayerAttackContext();
 	void SetStrategy(const PlayerAttackStrategy& i_strategy);
 	void ExecuteStategy(const cocos2d::Vec2& i_position, const MoveDirection& i_moveDirection);
+	void ChangeSkill();
 
 private:
-	std::unique_ptr<PlayerAttackStrategy> m_strategy;
+	std::vector<PlayerAttackStrategy> m_strategyList;
 
 };

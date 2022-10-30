@@ -13,5 +13,6 @@ public:
 
 private:
 	std::vector<PlayerAttackStrategy> m_strategyList;
+	int m_currentIdx;
 
 };

@@ -1,6 +1,7 @@
 #include "Player.h"
 #define MAX_HP  100;
 #define INIT_POSITION Vec2(0,0)
+
 Player::Player()
 {
 	this->m_lives = 0;

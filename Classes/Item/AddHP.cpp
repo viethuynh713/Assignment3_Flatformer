@@ -2,6 +2,7 @@
 
 AddHP::AddHP()
 {
+	Item();
 }
 
 AddHP::~AddHP()
@@ -12,7 +13,7 @@ void AddHP::applyEffect(const Player& i_player)
 {
 }
 
-int AddHP::HPChange()
+void AddHP::HPChange(Player& i_player)
 {
-	return 0;
+	i_player.changeHP(10);
 }

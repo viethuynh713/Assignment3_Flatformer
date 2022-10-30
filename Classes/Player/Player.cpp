@@ -48,3 +48,13 @@ void Player::learnSkill()
 void Player::die()
 {
 }
+
+void Player::addLive()
+{
+	m_lives += 10;
+}
+
+void Player::addSpeed()
+{
+	m_speed += 10;
+}

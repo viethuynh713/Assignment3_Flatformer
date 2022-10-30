@@ -12,6 +12,8 @@ public:
 	void changeHP(int i_hp);
 	void learnSkill();
 	void die();
+	void addLive();
+	void addSpeed();
 private:
 	enum State {
 		JUMPING,

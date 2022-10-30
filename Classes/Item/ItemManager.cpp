@@ -10,17 +10,19 @@ ItemManager::~ItemManager()
 
 void ItemManager::AddItem(const Item& i_item)
 {
+    m_itemList.emplace_back(i_item);
 }
 
 void ItemManager::RemoveItem(const Item& i_item)
 {
+
 }
 
 void ItemManager::ApplyEffect(Player& i_player)
 {
 }
 
-Item ItemManager::GenerateItem()
+void ItemManager::GenerateItem()
 {
-    return Item();
+    m_itemList = std::vector<Item>();
 }

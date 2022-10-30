@@ -16,7 +16,7 @@ void ItemManager::RemoveItem(const Item& i_item)
 {
 }
 
-void ItemManager::ApplyEffect(const Player& i_player)
+void ItemManager::ApplyEffect(Player& i_player)
 {
 }
 

@@ -1,5 +1,19 @@
 #include "BatSkill.h"
 
-void BatSkill::attack(const cocos2d::Vec2& m_position)
+BatSkill::BatSkill()
 {
+	m_skill = SkillList("Bat").GetSkill();
+}
+
+BatSkill::~BatSkill()
+{
+}
+
+void BatSkill::play(const cocos2d::Vec2& m_position)
+{
+}
+
+const std::vector<std::string> BatSkill::GetSkill()
+{
+	return m_skill;
 }

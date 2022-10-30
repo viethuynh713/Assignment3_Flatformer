@@ -1,21 +1,21 @@
 #pragma once
 
 
-#include "IEnemy.h"
-#include "EnemySkillContext.h"
 #include "../Player/Player.h"
+#include "EnemySkillContext.h"
 #include "cocos2d.h"
 
-class Enemy : public IEnemy {
+class Enemy{
 public:
 	Enemy();
 	~Enemy();
-	void die() override;
-	void attack() override;
-	void move() override;
-	void canAttack(const Player& i_player) override;
+	void die(const Player& i_player);
+	void attack();
+	void move();
+	void canAttack(const Player& i_player);
+	friend bool operator==(Enemy const& i_enemy, Enemy const& o_enemy);
 private:
-	std::string m_id;
+	int m_id;
 	cocos2d::Vec2 m_position;
 	std::shared_ptr<EnemySkillContext> m_EnemySkillContext;
 };

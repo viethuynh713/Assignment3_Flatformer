@@ -11,7 +11,7 @@ public:
 	void RemoveItem(const Item& i_item);
 	
 
-	void ApplyEffect(const Player& i_player);
+	void ApplyEffect(Player& i_player);
 	Item GenerateItem();
 
 private:

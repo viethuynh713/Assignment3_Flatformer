@@ -9,8 +9,8 @@ public:
 	~Star();
 	void applyEffect(const Player& i_player) override;
 
-	int LivesChange();
-	float SpeedChange();
+	int LivesChange(Player& i_player);
+	float SpeedChange(Player& i_player);
 private:
 	cocos2d::Vec2 m_position;
 	std::string m_itemId;

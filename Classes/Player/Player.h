@@ -9,7 +9,7 @@ public:
 	void move(const MoveDirection& i_direction);
 	void attack();
 	void changeWeapon();
-	void changeHP();
+	void changeHP(int i_hp);
 	void learnSkill();
 	void die();
 private:
@@ -30,4 +30,5 @@ private:
 	float m_timeNoDie;
 	float m_jumpForce;
 	State m_state;
+	std::string m_currentWeapon;
 };

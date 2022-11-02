@@ -1,8 +1,9 @@
 #pragma once
+
 #include "../Player/Player.h"
 #include "cocos2d.h"
 
-class Item{
+class Item: public cocos2d::Sprite {
 public:
 	Item();
 	~Item();

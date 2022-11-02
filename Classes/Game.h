@@ -23,7 +23,6 @@
  ****************************************************************************/
 
 #include "cocos2d.h"
-#include "GameController.h"
 
 class Game : public cocos2d::Scene
 {
@@ -37,7 +36,5 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(Game);
-private:
-    std::unique_ptr<GameController> m_gameController;
 };
 

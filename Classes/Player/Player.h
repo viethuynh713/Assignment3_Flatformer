@@ -2,16 +2,18 @@
 #include "PlayerAttackContext.h"
 #include "cocos2d.h"
 
-class Player {
+class Player: public cocos2d::Sprite {
 public:
 	Player();
 	~Player();
 	void move(const MoveDirection& i_direction);
 	void attack();
 	void changeWeapon();
-	void changeHP();
+	void changeHP(int HPChange);
 	void learnSkill();
 	void die();
+	void removeKeys(int p_nKey);
+	int getNKey();
 private:
 	enum State {
 		JUMPING,
@@ -30,4 +32,5 @@ private:
 	float m_timeNoDie;
 	float m_jumpForce;
 	State m_state;
+	int nKey;
 };

@@ -20,7 +20,7 @@ void Player::changeWeapon()
 {
 }
 
-void Player::changeHP()
+void Player::changeHP(int HPChange)
 {
 }
 
@@ -30,4 +30,12 @@ void Player::learnSkill()
 
 void Player::die()
 {
+}
+
+void Player::removeKeys(int p_nKey) {
+	nKey -= p_nKey;
+}
+
+int Player::getNKey() {
+	return nKey;
 }

@@ -1,19 +1,20 @@
 #pragma once
+
 #include "Item.h"
 #include "../Player/Player.h"
 #include "cocos2d.h"
 
-class ItemManager {
+class ItemManager: public cocos2d::Layer {
 public:
 	ItemManager();
 	~ItemManager();
-	void AddItem(const Item& i_item);
-	void RemoveItem(const Item& i_item);
+	void AddItem(Item* i_item);
+	void RemoveItem(Item i_item);
 	
 
-	void ApplyEffect(const Player& i_player);
-	Item GenerateItem();
+	void ApplyEffect(Player& i_player);
+	Item* GenerateItem();
 
 private:
-	std::vector<Item> m_itemList;
+	std::vector<Item*> m_itemList;
 };

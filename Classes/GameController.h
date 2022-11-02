@@ -4,16 +4,18 @@
 #include "Item/ItemManager.h"
 #include "Player/Player.h"
 #include "Enemy/EnemyManager.h"
+#include "Enviroment/MapManager.h"
 
-class GameController {
+class GameController: public cocos2d::Layer {
 public:
 	GameController();
 	~GameController();
-	void InitGame();
+	virtual bool init();
 	void Play();
 	void EndGame();
 	void Restart();
 	void Pause();
+	void setPhysicsWorld(cocos2d::PhysicsWorld* world);
 private:
 	enum GameState {
 		INIT,
@@ -22,7 +24,8 @@ private:
 		EXIT
 	};
 	std::unique_ptr<EnemyManager> m_enemyManager;
-	std::unique_ptr<ItemManager> m_itemManager;
+	ItemManager* m_itemManager;
 	std::unique_ptr<Player> m_player;
-	GameState m_gameState;
+	MapManager* m_mapManager;
+	cocos2d::PhysicsWorld* sceneWorld;
 };

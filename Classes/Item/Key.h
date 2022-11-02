@@ -3,10 +3,10 @@
 #include "Item.h"
 #include "cocos2d.h"
 
-class Coin : public Item{
+class Key : public Item {
 public:
-	Coin();
-	~Coin();
+	Key();
+	~Key();
 	void applyEffect(Player& i_player) override;
 private:
 	cocos2d::Vec2 m_position;

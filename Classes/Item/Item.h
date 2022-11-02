@@ -7,5 +7,5 @@ class Item: public cocos2d::Sprite {
 public:
 	Item();
 	~Item();
-	virtual void applyEffect(const Player& i_player);
+	virtual void applyEffect(Player& i_player);
 };

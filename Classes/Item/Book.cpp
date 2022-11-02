@@ -8,7 +8,7 @@ Book::~Book()
 {
 }
 
-void Book::applyEffect(const Player& i_player)
+void Book::applyEffect(Player& i_player)
 {
 }
 

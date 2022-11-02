@@ -44,3 +44,7 @@ void GameController::Pause()
 void GameController::setPhysicsWorld(cocos2d::PhysicsWorld* world) {
 	sceneWorld = world;
 }
+
+ItemManager* GameController::getItemManager() {
+	return m_itemManager;
+}

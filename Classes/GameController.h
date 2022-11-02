@@ -16,6 +16,7 @@ public:
 	void Restart();
 	void Pause();
 	void setPhysicsWorld(cocos2d::PhysicsWorld* world);
+	ItemManager* getItemManager();
 private:
 	enum GameState {
 		INIT,

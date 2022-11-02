@@ -43,9 +43,9 @@ void MapManager::createMap() {
             map.at(j).at(i) = tileFactory->getTileNode(mapSymbol.at(j).at(i), tileSizeWidth * i, tileSizeHeight * (height - j - 1));
             auto sprite = map.at(j).at(i);
             if (sprite != nullptr) {
-                int layer = 0;
+                int layer = 1;
                 if (mapSymbol.at(j).at(i) == '|' || mapSymbol.at(j).at(i) == '/') {
-                    layer = -1;
+                    layer = 0;
                 }
                 this->addChild(sprite, layer);
             }

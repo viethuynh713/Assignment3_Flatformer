@@ -1,11 +1,11 @@
 #include "Background.h"
-#include "Item/Key.h"
 
 USING_NS_CC;
 
 Background::Background(float x, float y, std::string nameObject) {
 	canDestroy = false;
 	coverKey = false;
+	isKey = false;
 	if (nameObject == "bush") {
 		canDestroy = true;
 		this->initWithFile("sprite/background/grass.png");
@@ -29,10 +29,18 @@ Background::~Background()
 void Background::destroy() {
 	if (canDestroy) {
 		if (coverKey) {
-			auto key = new Key();
-			key->setPosition(this->getPosition());
-			this->getParent()->addChild(key);
+			this->setTexture("sprite/door/key.png");
+			isKey = true;
 		}
+		else {
+			this->removeFromParentAndCleanup(true);
+		}
+	}
+}
+
+void Background::doInteract(Player& player) {
+	if (isKey) {
+		player.addKey(1);
 		this->removeFromParentAndCleanup(true);
 	}
 }

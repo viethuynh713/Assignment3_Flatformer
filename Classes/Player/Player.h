@@ -12,8 +12,9 @@ public:
 	void changeHP(int HPChange);
 	void learnSkill();
 	void die();
-	void removeKeys(int p_nKey);
 	int getNKey();
+	void addKey(int nKeyAdd);
+	void removeKey(int nKeyRemove);
 private:
 	enum State {
 		JUMPING,

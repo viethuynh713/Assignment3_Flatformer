@@ -25,7 +25,7 @@ void Door::doInteract(Player& player) {
 	if (!isOpened && player.getNKey() >= this->nKeyNeed) {
 		isOpened = true;
 		this->open();
-		player.removeKeys(this->nKeyNeed);
+		player.removeKey(this->nKeyNeed);
 	}
 }
 

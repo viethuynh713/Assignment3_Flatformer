@@ -7,7 +7,7 @@ class AddHP : public Item{
 public:
 	AddHP();
 	~AddHP();
-	void applyEffect(const Player& i_player) override;
+	void applyEffect(Player& i_player) override;
 
 	int HPChange();
 private:

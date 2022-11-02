@@ -7,7 +7,7 @@ class Star : public Item{
 public:
 	Star();
 	~Star();
-	void applyEffect(const Player& i_player) override;
+	void applyEffect(Player& i_player) override;
 
 	int LivesChange();
 	float SpeedChange();

@@ -32,10 +32,16 @@ void Player::die()
 {
 }
 
-void Player::removeKeys(int p_nKey) {
-	nKey -= p_nKey;
-}
-
 int Player::getNKey() {
 	return nKey;
+}
+
+void Player::addKey(int nKeyAdd) {
+	nKey += nKeyAdd;
+}
+
+void Player::removeKey(int nKeyRemove) {
+	if (nKeyRemove <= nKey) {
+		nKey -= nKeyRemove;
+	}
 }

@@ -8,7 +8,7 @@ Star::~Star()
 {
 }
 
-void Star::applyEffect(const Player& i_player)
+void Star::applyEffect(Player& i_player)
 {
 }
 

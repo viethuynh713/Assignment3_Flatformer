@@ -8,7 +8,7 @@ AddHP::~AddHP()
 {
 }
 
-void AddHP::applyEffect(const Player& i_player)
+void AddHP::applyEffect(Player& i_player)
 {
 
 }

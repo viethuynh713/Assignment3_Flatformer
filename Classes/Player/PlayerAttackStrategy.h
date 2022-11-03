@@ -5,7 +5,9 @@
 enum class MoveDirection
 {
 	LEFT,
-	RIGHT
+	RIGHT,
+	UP,
+	DOWN
 };
 
 class PlayerAttackStrategy {

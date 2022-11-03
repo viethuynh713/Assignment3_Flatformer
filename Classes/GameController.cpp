@@ -12,7 +12,9 @@ GameController::GameController()
 	this->m_mapManager->addChild(m_itemManager, 0);
 	m_player = new Player();
 	this->m_mapManager->addChild(m_player, 1);
-	sceneWorld = nullptr;;
+	sceneWorld = nullptr;
+
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(m_player->getListenerKeyboard(), this);
 }
 
 GameController::~GameController()

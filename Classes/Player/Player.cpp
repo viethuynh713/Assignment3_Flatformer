@@ -17,9 +17,9 @@ Player::Player()
 	this->m_timeNoDie = 1;
 	this->m_isJumping = false;
 	this->m_isSitting = false;
-	auto listener = EventListenerKeyboard::create();
-	listener->onKeyPressed = CC_CALLBACK_2(Player::onKeyPressed, this);
-	listener->onKeyReleased = CC_CALLBACK_2(Player::onKeyReleased, this);
+	listenerKeyboard = EventListenerKeyboard::create();
+	listenerKeyboard->onKeyPressed = CC_CALLBACK_2(Player::onKeyPressed, this);
+	listenerKeyboard->onKeyReleased = CC_CALLBACK_2(Player::onKeyReleased, this);
 
 	// create image
 	auto sampleTile = Sprite::create("sprite/ground/ground_top.png");
@@ -41,21 +41,23 @@ Player::~Player()
 
 void Player::move(const MoveDirection& i_direction)
 {
-	this->m_moveDirection = i_direction;
-	switch (i_direction)
-	{
-	case MoveDirection::LEFT:
-		this->runAction(MoveBy::create(0.1, Vec2(-m_speed, 0)));
-		break;
-	case MoveDirection::RIGHT:
-		this->runAction(MoveBy::create(0.1, Vec2(m_speed, 0)));
-		break;
-	case MoveDirection::UP:
-		break;
-	case MoveDirection::DOWN:
-		break;
-	default:
-		break;
+	while (true) {
+		this->m_moveDirection = i_direction;
+		switch (i_direction)
+		{
+		case MoveDirection::LEFT:
+			this->runAction(MoveBy::create(0.1, Vec2(-m_speed, 0)));
+			break;
+		case MoveDirection::RIGHT:
+			this->runAction(MoveBy::create(0.1, Vec2(m_speed, 0)));
+			break;
+		case MoveDirection::UP:
+			break;
+		case MoveDirection::DOWN:
+			break;
+		default:
+			break;
+		}
 	}
 }
 
@@ -129,6 +131,7 @@ void Player::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		this->move(MoveDirection::DOWN);
 	}
 }
+
 void Player::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	if (keyCode == EventKeyboard::KeyCode::KEY_Q)
@@ -163,4 +166,8 @@ void Player::removeKey(int nKeyRemove) {
 	if (nKeyRemove <= nKey) {
 		nKey -= nKeyRemove;
 	}
+}
+
+cocos2d::EventListenerKeyboard* Player::getListenerKeyboard() {
+	return listenerKeyboard;
 }

@@ -19,6 +19,7 @@ public:
 	int getNKey();
 	void addKey(int nKeyAdd);
 	void removeKey(int nKeyRemove);
+	cocos2d::EventListenerKeyboard* getListenerKeyboard();
 private:
 	enum State {
 		JUMPING,
@@ -41,4 +42,5 @@ private:
 	State m_state;
 	std::string m_currentWeapon;
 	int nKey;
+	cocos2d::EventListenerKeyboard* listenerKeyboard;
 };

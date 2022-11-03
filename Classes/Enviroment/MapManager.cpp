@@ -11,7 +11,7 @@ MapManager::MapManager()
     tileSizeWidth = sampleTile->getContentSize().width;
     tileSizeHeight = sampleTile->getContentSize().height;
     this->setAnchorPoint(Vec2(0, 0));
-    this->setPosition(cocos2d::Vec2(-tileSizeWidth * 0, -tileSizeHeight * 15));
+    this->setPosition(cocos2d::Vec2(-tileSizeWidth * 0, -tileSizeHeight * 22));
     createMap();
 }
 

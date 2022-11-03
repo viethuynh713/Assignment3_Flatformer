@@ -2,7 +2,7 @@
 #include "PlayerAttackContext.h"
 #include "cocos2d.h"
 using namespace cocos2d;
-class Player {
+class Player: public cocos2d::Sprite {
 public:
 	Player();
 	~Player();

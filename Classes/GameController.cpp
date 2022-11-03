@@ -6,12 +6,12 @@ GameController::GameController()
 {
 	m_enemyManager = new EnemyManager();
 	this->addChild(m_enemyManager);
-	m_player = new Player();
-	this->addChild(m_player);
 	m_itemManager = new ItemManager();
 	this->addChild(m_itemManager);
 	m_mapManager = new MapManager();
 	this->addChild(m_mapManager);
+	m_player = new Player();
+	this->addChild(m_player);
 	sceneWorld = nullptr;
 }
 

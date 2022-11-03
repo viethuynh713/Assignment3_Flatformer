@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "PlayerAttackContext.h"
 #define MAX_HP  100;
 #define INIT_POSITION Vec2(0,0)
 
@@ -19,7 +20,14 @@ Player::Player()
 	auto listener = EventListenerKeyboard::create();
 	listener->onKeyPressed = CC_CALLBACK_2(Player::onKeyPressed, this);
 	listener->onKeyReleased = CC_CALLBACK_2(Player::onKeyReleased, this);
-	
+
+	// create image
+	auto sampleTile = Sprite::create("sprite/ground/ground_top.png");
+	float tileSizeWidth = sampleTile->getContentSize().width;
+	float tileSizeHeight = sampleTile->getContentSize().height;
+	this->initWithFile("Player/Idle/SNinja_idle1.png");
+	this->setAnchorPoint(Vec2(0, 0));
+	this->setPosition(cocos2d::Vec2(tileSizeWidth * 2, tileSizeHeight * 2));
 }
 
 Player::~Player()
@@ -67,8 +75,6 @@ void Player::changeWeapon()
 		}
 	}
 }
-	this->m_playerAttackContext->ChangeSkill();
-}
 
 void Player::changeHP(int dental)
 {
@@ -87,9 +93,6 @@ void Player::changeHP(int dental)
 			this->m_position = INIT_POSITION;
 		}
 	}
-void Player::changeHP(int i_hp)
-{
-	m_HP += i_hp;
 }
 
 void Player::learnSkill()

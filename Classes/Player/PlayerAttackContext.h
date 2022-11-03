@@ -7,10 +7,9 @@ class PlayerAttackContext {
 public:
 	PlayerAttackContext();
 	~PlayerAttackContext();
-	void SetStrategy(const PlayerAttackStrategy& i_strategy);
+	void SetStrategy(std::string i_strategy);
 	void ExecuteStategy(const cocos2d::Vec2& i_position, const MoveDirection& i_moveDirection);
-
+	int GetNumSkill();
 private:
-	std::unique_ptr<PlayerAttackStrategy> m_strategy;
-
+	std::vector<std::string> m_strategy;
 };

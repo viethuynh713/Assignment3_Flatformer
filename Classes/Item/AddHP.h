@@ -9,9 +9,5 @@ public:
 	~AddHP();
 	void applyEffect(Player& i_player) override;
 
-	int HPChange();
-private:
-	cocos2d::Vec2 m_position;
-	std::string m_itemId;
-	RECT m_hitBox;
+	void HPChange(Player& i_player);
 };

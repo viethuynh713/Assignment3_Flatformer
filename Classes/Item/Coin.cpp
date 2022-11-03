@@ -1,6 +1,7 @@
 #include "Coin.h"
 Coin::Coin()
 {
+	Item();
 }
 
 Coin::~Coin()

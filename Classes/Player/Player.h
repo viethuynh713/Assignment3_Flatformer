@@ -9,9 +9,11 @@ public:
 	void move(const MoveDirection& i_direction);
 	void attack();
 	void changeWeapon();
-	void changeHP(int HPChange);
+	void changeHP(int i_hp);
 	void learnSkill();
 	void die();
+	void addLive();
+	void addSpeed();
 	int getNKey();
 	void addKey(int nKeyAdd);
 	void removeKey(int nKeyRemove);
@@ -33,5 +35,6 @@ private:
 	float m_timeNoDie;
 	float m_jumpForce;
 	State m_state;
+	std::string m_currentWeapon;
 	int nKey;
 };

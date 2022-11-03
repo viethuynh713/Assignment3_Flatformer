@@ -13,7 +13,7 @@ public:
 	
 
 	void ApplyEffect(Player& i_player);
-	Item* GenerateItem();
+	void GenerateItem();
 
 private:
 	std::vector<Item*> m_itemList;

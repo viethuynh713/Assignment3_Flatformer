@@ -13,7 +13,7 @@ ItemManager::~ItemManager()
 
 void ItemManager::AddItem(Item* i_item)
 {
-    m_itemList.push_back(i_item);
+    m_itemList.emplace_back(i_item);
 }
 
 void ItemManager::RemoveItem(Item i_item)
@@ -29,7 +29,7 @@ void ItemManager::ApplyEffect(Player& i_player)
 {
 }
 
-Item* ItemManager::GenerateItem()
+void ItemManager::GenerateItem()
 {
-    return new Item();
+    m_itemList = std::vector<Item>();
 }

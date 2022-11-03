@@ -12,12 +12,12 @@ void Star::applyEffect(Player& i_player)
 {
 }
 
-int Star::LivesChange()
+void Star::LivesChange(Player& i_player)
 {
-	return 0;
+	i_player.addLive();
 }
 
-float Star::SpeedChange()
+void Star::SpeedChange(Player& i_player)
 {
-	return 0.0f;
+	i_player.addSpeed();
 }

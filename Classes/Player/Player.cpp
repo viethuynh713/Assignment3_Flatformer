@@ -9,7 +9,7 @@ Player::Player()
 	this->m_HP = MAX_HP;
 	this->m_coin = 0;
 	this->m_jumpForce = 100;
-	this->m_speed = 100;
+	this->m_speed = 10;
 	//this->m_hixBox = Rect::setRect((float)0, (float)0, (float)100, (float)100);
 	this->m_moveDirection = MoveDirection::RIGHT;
 	this->m_position = INIT_POSITION;
@@ -26,8 +26,13 @@ Player::Player()
 	float tileSizeWidth = sampleTile->getContentSize().width;
 	float tileSizeHeight = sampleTile->getContentSize().height;
 	this->initWithFile("Player/Idle/SNinja_idle1.png");
+	auto physicsBody = PhysicsBody::createBox(
+		Size(this->getContentSize().width, this->getContentSize().height), PhysicsMaterial(0.1f, 1.0f, 0.0f)
+	);
+	physicsBody->setDynamic(true);
+	this->addComponent(physicsBody);
 	this->setAnchorPoint(Vec2(0, 0));
-	this->setPosition(cocos2d::Vec2(tileSizeWidth * 2, tileSizeHeight * 2));
+	this->setPosition(cocos2d::Vec2(tileSizeWidth * 1, tileSizeHeight * 24));
 }
 
 Player::~Player()
@@ -40,8 +45,10 @@ void Player::move(const MoveDirection& i_direction)
 	switch (i_direction)
 	{
 	case MoveDirection::LEFT:
+		this->runAction(MoveBy::create(0.1, Vec2(-m_speed, 0)));
 		break;
 	case MoveDirection::RIGHT:
+		this->runAction(MoveBy::create(0.1, Vec2(m_speed, 0)));
 		break;
 	case MoveDirection::UP:
 		break;
@@ -105,7 +112,7 @@ void Player::die()
 }
 void Player::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (keyCode == EventKeyboard::KeyCode::KEY_SPACE && !this->m_isJumping)
+	if (keyCode == EventKeyboard::KeyCode::KEY_W && !this->m_isJumping)
 	{
 		this->move(MoveDirection::UP);
 	}

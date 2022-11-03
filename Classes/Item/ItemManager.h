@@ -8,7 +8,7 @@ class ItemManager: public cocos2d::Layer {
 public:
 	ItemManager();
 	~ItemManager();
-	void AddItem(Item* i_item);
+	void AddItem(Item i_item);
 	void RemoveItem(Item i_item);
 	
 
@@ -16,5 +16,5 @@ public:
 	void GenerateItem();
 
 private:
-	std::vector<Item*> m_itemList;
+	std::vector<Item> m_itemList;
 };

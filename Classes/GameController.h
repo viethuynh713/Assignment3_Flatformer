@@ -24,9 +24,9 @@ private:
 		PAUSE,
 		EXIT
 	};
-	std::unique_ptr<EnemyManager> m_enemyManager;
+	EnemyManager* m_enemyManager;
 	ItemManager* m_itemManager;
-	std::unique_ptr<Player> m_player;
+	Player* m_player;
 	MapManager* m_mapManager;
 	cocos2d::PhysicsWorld* sceneWorld;
 };

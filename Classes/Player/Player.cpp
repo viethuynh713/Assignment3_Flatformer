@@ -18,7 +18,7 @@ void Player::attack()
 
 void Player::changeWeapon()
 {
-	if (m_playerAttackContext->GetNumSkill() <  2)
+	if (m_playerAttackContext->GetNumSkill() < 2)
 	{
 		return;
 	}

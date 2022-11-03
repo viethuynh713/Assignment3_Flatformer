@@ -4,16 +4,16 @@ USING_NS_CC;
 
 ItemManager::ItemManager()
 {
-    m_itemList = std::vector<Item*>();
+    m_itemList = std::vector<Item>();
 }
 
 ItemManager::~ItemManager()
 {
 }
 
-void ItemManager::AddItem(Item* i_item)
+void ItemManager::AddItem(Item i_item)
 {
-    m_itemList.emplace_back(i_item);
+    /*m_itemList.push_back(i_item);*/
 }
 
 void ItemManager::RemoveItem(Item i_item)

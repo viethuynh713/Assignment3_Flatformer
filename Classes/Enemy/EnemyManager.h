@@ -3,7 +3,7 @@
 #include "cocos2d.h"
 
 
-class EnemyManager {
+class EnemyManager: public cocos2d::Layer {
 public:
 	EnemyManager();
 	~EnemyManager();

@@ -7,5 +7,5 @@ class Coin : public Item{
 public:
 	Coin();
 	~Coin();
-	void applyEffect(const Player& i_player) override;
+	void applyEffect(Player& i_player) override;
 };

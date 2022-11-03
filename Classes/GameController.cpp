@@ -4,14 +4,20 @@ USING_NS_CC;
 
 GameController::GameController()
 {
+	m_enemyManager = new EnemyManager();
+	this->addChild(m_enemyManager);
+	m_player = new Player();
+	this->addChild(m_player);
 	m_itemManager = new ItemManager();
 	this->addChild(m_itemManager);
 	m_mapManager = new MapManager();
 	this->addChild(m_mapManager);
+	sceneWorld = nullptr;
 }
 
 GameController::~GameController()
 {
+	delete[] m_player;
 	delete[] m_itemManager;
 	delete[] m_mapManager;
 }

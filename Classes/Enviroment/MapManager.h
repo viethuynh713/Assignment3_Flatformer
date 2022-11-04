@@ -9,7 +9,8 @@ public:
 	MapManager();
 	~MapManager();
 	virtual bool init();
-	void checkCollide(Player& player);
+	bool checkCollide(Player& player);
+	void move(cocos2d::Vec2 dir);
 private:
 	std::unique_ptr<TileFactory> tileFactory;
 	std::vector<std::vector<char>> mapSymbol;

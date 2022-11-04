@@ -10,7 +10,8 @@ class GameController: public cocos2d::Layer {
 public:
 	GameController();
 	~GameController();
-	virtual bool init();
+	virtual bool initWithPhysics();
+	virtual void update(float dt);
 	void Play();
 	void EndGame();
 	void Restart();

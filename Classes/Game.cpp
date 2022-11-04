@@ -30,7 +30,8 @@ USING_NS_CC;
 Scene* Game::createScene()
 {
     auto scene = Scene::createWithPhysics();
-    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
+    scene->getPhysicsWorld()->setGravity(Vec2(0, -200));
     auto layer = new GameController();
     layer->setPhysicsWorld(scene->getPhysicsWorld());
     scene->addChild(layer);

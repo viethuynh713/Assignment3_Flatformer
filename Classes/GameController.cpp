@@ -14,7 +14,22 @@ GameController::GameController()
 	this->m_mapManager->addChild(m_player, 1);
 	sceneWorld = nullptr;
 
+	auto sampleTile = Sprite::create("sprite/ground/ground_top.png");
+	float tileSizeWidth = sampleTile->getContentSize().width;
+	float tileSizeHeight = sampleTile->getContentSize().height;
+	
+	m_enemyManager->AddEnemy(new Enemy(cocos2d::Vec2(tileSizeWidth * 5, tileSizeHeight * 16)));
+	m_enemyManager->AddEnemy(new Enemy(cocos2d::Vec2(tileSizeWidth * 10, tileSizeHeight * 16)));
+	m_enemyManager->AddEnemy(new Enemy(cocos2d::Vec2(tileSizeWidth * 18, tileSizeHeight * 16)));
+	m_enemyManager->AddEnemy(new Enemy(cocos2d::Vec2(tileSizeWidth * 34, tileSizeHeight * 16)));
+	m_enemyManager->AddEnemy(new Enemy(cocos2d::Vec2(tileSizeWidth * 25, tileSizeHeight * 1)));
+	m_enemyManager->AddEnemy(new Enemy(cocos2d::Vec2(tileSizeWidth * 28, tileSizeHeight * 1)));
+	m_enemyManager->AddEnemy(new Enemy(cocos2d::Vec2(tileSizeWidth * 31, tileSizeHeight * 1)));
+	m_enemyManager->AddEnemy(new Enemy(cocos2d::Vec2(tileSizeWidth * 8, tileSizeHeight * 8)));
+
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(m_player->getListenerKeyboard(), this);
+
+	Play();
 }
 
 GameController::~GameController()
@@ -24,7 +39,7 @@ GameController::~GameController()
 	delete[] m_mapManager;
 }
 
-bool GameController::init()
+bool GameController::initWithPhysics()
 {
 	if (!Layer::init()) {
 		return false;
@@ -35,6 +50,14 @@ bool GameController::init()
 
 void GameController::Play()
 {
+	scheduleUpdate();
+}
+
+void GameController::update(float dt) {
+	m_player->loop();
+	if (m_player->isAttack()) {
+		m_enemyManager->checkCollide(m_player);
+	}
 }
 
 void GameController::EndGame()

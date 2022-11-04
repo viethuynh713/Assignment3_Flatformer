@@ -2,11 +2,11 @@
 #include "PlayerAttackContext.h"
 #include "cocos2d.h"
 using namespace cocos2d;
-class Player: public cocos2d::Sprite {
+class Player : public cocos2d::Sprite {
 public:
 	Player();
 	~Player();
-	void move(const MoveDirection& i_direction);
+	void loop();
 	void attack();
 	void changeWeapon();
 	void changeHP(int dental);
@@ -19,14 +19,17 @@ public:
 	int getNKey();
 	void addKey(int nKeyAdd);
 	void removeKey(int nKeyRemove);
+	bool isAttack();
 	cocos2d::EventListenerKeyboard* getListenerKeyboard();
+
+	void resetJumpState();
 private:
 	enum State {
 		JUMPING,
 		SITTING,
 		RUNNING
 	};
-	
+
 	int m_lives;
 	int m_HP;
 	cocos2d::Vec2 m_position;
@@ -39,8 +42,15 @@ private:
 	float m_jumpForce;
 	bool m_isSitting;
 	bool m_isJumping;
+	bool m_isAttacking;
 	State m_state;
 	std::string m_currentWeapon;
 	int nKey;
+	cocos2d::PhysicsBody* physicsBody;
 	cocos2d::EventListenerKeyboard* listenerKeyboard;
+
+	cocos2d::Sprite* spriteAnimation;
+
+	void jump();
+	Vector<SpriteFrame*> getAnimation(const char* format, int count);
 };

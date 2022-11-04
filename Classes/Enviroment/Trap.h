@@ -9,7 +9,7 @@ public:
 	Trap(float x, float y);
 	Trap(float x, float y, int angle);
 	~Trap();
-	virtual void doInteract(Player& player);
+	virtual void doInteract(Player* player);
 private:
 	int damage;
 };

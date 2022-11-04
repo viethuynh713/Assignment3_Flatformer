@@ -7,8 +7,8 @@ class Star : public Item{
 public:
 	Star();
 	~Star();
-	void applyEffect(Player& i_player) override;
+	void applyEffect(Player* i_player) override;
 
-	void LivesChange(Player& i_player);
-	void SpeedChange(Player& i_player);
+	void LivesChange(Player* i_player);
+	void SpeedChange(Player* i_player);
 };

@@ -7,7 +7,7 @@ class Book : public Item{
 public:
 	Book();
 	~Book();
-	void applyEffect(Player& i_player) override;
+	void applyEffect(Player* i_player) override;
 
-	void AddSkill(Player& i_player);
+	void AddSkill(Player* i_player);
 };

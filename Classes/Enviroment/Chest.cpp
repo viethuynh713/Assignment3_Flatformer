@@ -18,7 +18,7 @@ Chest::~Chest()
 	}
 }
 
-void Chest::doInteract(Player& player) {
+void Chest::doInteract(Player* player) {
 	if (isClosing) {
 		for (auto i : rewardList) {
 			i->applyEffect(player);

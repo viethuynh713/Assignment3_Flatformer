@@ -8,6 +8,6 @@ Coin::~Coin()
 {
 }
 
-void Coin::applyEffect(Player& i_player)
+void Coin::applyEffect(Player* i_player)
 {
 }

@@ -38,9 +38,9 @@ void Background::destroy() {
 	}
 }
 
-void Background::doInteract(Player& player) {
+void Background::doInteract(Player* player) {
 	if (isKey) {
-		player.addKey(1);
+		player->addKey(1);
 		this->removeFromParentAndCleanup(true);
 	}
 }

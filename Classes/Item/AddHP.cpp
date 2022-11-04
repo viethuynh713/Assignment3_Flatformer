@@ -9,12 +9,12 @@ AddHP::~AddHP()
 {
 }
 
-void AddHP::applyEffect(Player& i_player)
+void AddHP::applyEffect(Player* i_player)
 {
-
+	HPChange(i_player);
 }
 
-void AddHP::HPChange(Player& i_player)
+void AddHP::HPChange(Player* i_player)
 {
-	i_player.changeHP(10);
+	i_player->changeHP(10);
 }

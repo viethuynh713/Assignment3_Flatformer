@@ -16,9 +16,9 @@ TileNode::~TileNode()
 	
 }
 
-bool TileNode::isCollide(Player& player) {
+bool TileNode::isCollide(Player* player) {
 	auto boundingBox = this->getBoundingBox();
-	auto playerBoundingBox = player.getBoundingBox();
+	auto playerBoundingBox = player->getBoundingBox();
 	if (boundingBox.intersectsRect(playerBoundingBox)) {
 		this->doInteract(player);
 		return true;
@@ -26,6 +26,6 @@ bool TileNode::isCollide(Player& player) {
 	return false;
 }
 
-void TileNode::doInteract(Player& player) {
+void TileNode::doInteract(Player* player) {
 
 }

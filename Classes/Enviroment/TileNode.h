@@ -8,6 +8,6 @@ public:
 	TileNode();
 	TileNode(int x, int y);
 	~TileNode();
-	bool isCollide(Player& player);
-	virtual void doInteract(Player& player);
+	bool isCollide(Player* player);
+	virtual void doInteract(Player* player);
 };

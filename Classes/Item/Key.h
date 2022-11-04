@@ -7,7 +7,7 @@ class Key : public Item {
 public:
 	Key();
 	~Key();
-	void applyEffect(Player& i_player) override;
+	void applyEffect(Player* i_player) override;
 private:
 	cocos2d::Vec2 m_position;
 	std::string m_itemId;

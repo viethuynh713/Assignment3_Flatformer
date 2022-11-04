@@ -7,7 +7,7 @@ Key::~Key()
 {
 }
 
-void Key::applyEffect(Player& i_player)
+void Key::applyEffect(Player* i_player)
 {
-	i_player.addKey(1);
+	i_player->addKey(1);
 }

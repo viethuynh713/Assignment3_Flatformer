@@ -237,6 +237,10 @@ bool Player::isAttack() {
 	return m_isAttacking;
 }
 
+int Player::getHP() {
+	return m_HP;
+}
+
 cocos2d::EventListenerKeyboard* Player::getListenerKeyboard() {
 	return listenerKeyboard;
 }

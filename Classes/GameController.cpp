@@ -1,4 +1,5 @@
 #include "GameController.h"
+#include "ui/CocosGUI.h"
 
 USING_NS_CC;
 
@@ -26,6 +27,12 @@ GameController::GameController()
 	m_enemyManager->AddEnemy(new Enemy(cocos2d::Vec2(tileSizeWidth * 28, tileSizeHeight * 1)));
 	m_enemyManager->AddEnemy(new Enemy(cocos2d::Vec2(tileSizeWidth * 31, tileSizeHeight * 1)));
 	m_enemyManager->AddEnemy(new Enemy(cocos2d::Vec2(tileSizeWidth * 8, tileSizeHeight * 8)));
+
+	std::stringstream ss;
+	ss << (m_player->getHP());
+	auto hpText = Label::createWithTTF(ss.str(), "fonts/Marker Felt.ttf", 24);
+	hpText->setPosition(m_mapManager->getPosition() + Vec2(640, 700));
+	this->addChild(hpText, 2);
 
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(m_player->getListenerKeyboard(), this);
 
@@ -58,6 +65,7 @@ void GameController::update(float dt) {
 	if (m_player->isAttack()) {
 		m_enemyManager->checkCollide(m_player);
 	}
+	m_mapManager->checkCollide(m_player);
 }
 
 void GameController::EndGame()

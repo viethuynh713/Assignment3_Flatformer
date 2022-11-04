@@ -8,16 +8,16 @@ Star::~Star()
 {
 }
 
-void Star::applyEffect(Player& i_player)
+void Star::applyEffect(Player* i_player)
 {
 }
 
-void Star::LivesChange(Player& i_player)
+void Star::LivesChange(Player* i_player)
 {
-	i_player.addLive();
+	i_player->addLive();
 }
 
-void Star::SpeedChange(Player& i_player)
+void Star::SpeedChange(Player* i_player)
 {
-	i_player.addSpeed();
+	i_player->addSpeed();
 }

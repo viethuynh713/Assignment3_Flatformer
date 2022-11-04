@@ -35,6 +35,6 @@ Trap::~Trap()
 
 }
 
-void Trap::doInteract(Player& player) {
-	player.changeHP(-damage);
+void Trap::doInteract(Player* player) {
+	player->changeHP(-damage);
 }

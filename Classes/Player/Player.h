@@ -20,6 +20,7 @@ public:
 	void addKey(int nKeyAdd);
 	void removeKey(int nKeyRemove);
 	bool isAttack();
+	int getHP();
 	cocos2d::EventListenerKeyboard* getListenerKeyboard();
 
 	void resetJumpState();

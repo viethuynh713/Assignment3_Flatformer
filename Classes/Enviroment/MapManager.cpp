@@ -53,11 +53,13 @@ void MapManager::createMap() {
     }
 }
 
-bool MapManager::checkCollide(Player& player) {
+bool MapManager::checkCollide(Player* player) {
     bool isCollide = false;
     for (int j = 0; j < height; j++) {
         for (int i = 0; i < width; i++) {
-            isCollide = map.at(j).at(i)->isCollide(player) || isCollide;
+            if (map.at(j).at(i) != nullptr) {
+                isCollide = map.at(j).at(i)->isCollide(player) || isCollide;
+            }
         }
     }
     return isCollide;

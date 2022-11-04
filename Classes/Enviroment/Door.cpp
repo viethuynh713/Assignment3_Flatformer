@@ -21,11 +21,11 @@ Door::~Door()
 	
 }
 
-void Door::doInteract(Player& player) {
-	if (!isOpened && player.getNKey() >= this->nKeyNeed) {
+void Door::doInteract(Player* player) {
+	if (!isOpened && player->getNKey() >= this->nKeyNeed) {
 		isOpened = true;
 		this->open();
-		player.removeKey(this->nKeyNeed);
+		player->removeKey(this->nKeyNeed);
 	}
 }
 

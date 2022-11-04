@@ -9,7 +9,7 @@ class Chest : public TileNode {
 public:
 	Chest(float x, float y, std::vector<Item*> p_rewardList);
 	~Chest();
-	virtual void doInteract(Player& player);
+	virtual void doInteract(Player* player);
 private:
 	std::vector<Item*> rewardList;
 	bool isClosing;

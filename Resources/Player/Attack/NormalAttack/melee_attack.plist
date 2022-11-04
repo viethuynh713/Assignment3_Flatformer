@@ -4,82 +4,97 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>SNinja_idle1.png</key>
+            <key>SNinja_Atk1.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{64,96}</string>
+                <string>{114,96}</string>
                 <key>spriteSourceSize</key>
-                <string>{64,96}</string>
+                <string>{114,96}</string>
                 <key>textureRect</key>
-                <string>{{0,0},{64,96}}</string>
+                <string>{{0,0},{114,96}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>SNinja_idle2.png</key>
+            <key>SNinja_Atk2.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{64,96}</string>
+                <string>{107,96}</string>
                 <key>spriteSourceSize</key>
-                <string>{64,96}</string>
+                <string>{107,96}</string>
                 <key>textureRect</key>
-                <string>{{0,96},{64,96}}</string>
+                <string>{{114,0},{107,96}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>SNinja_idle3.png</key>
+            <key>SNinja_Atk3.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{64,96}</string>
+                <string>{113,96}</string>
                 <key>spriteSourceSize</key>
-                <string>{64,96}</string>
+                <string>{113,96}</string>
                 <key>textureRect</key>
-                <string>{{0,192},{64,96}}</string>
+                <string>{{221,0},{113,96}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>SNinja_idle4.png</key>
+            <key>SNinja_Atk4.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{64,96}</string>
+                <string>{114,96}</string>
                 <key>spriteSourceSize</key>
-                <string>{64,96}</string>
+                <string>{114,96}</string>
                 <key>textureRect</key>
-                <string>{{0,288},{64,96}}</string>
+                <string>{{334,0},{114,96}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>SNinja_idle5.png</key>
+            <key>SNinja_Atk5.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{64,96}</string>
+                <string>{113,96}</string>
                 <key>spriteSourceSize</key>
-                <string>{64,96}</string>
+                <string>{113,96}</string>
                 <key>textureRect</key>
-                <string>{{0,384},{64,96}}</string>
+                <string>{{448,0},{113,96}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>SNinja_idle6.png</key>
+            <key>SNinja_Atk6.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{113,96}</string>
+                <key>spriteSourceSize</key>
+                <string>{113,96}</string>
+                <key>textureRect</key>
+                <string>{{561,0},{113,96}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>SNinja_Atk7.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -90,7 +105,7 @@
                 <key>spriteSourceSize</key>
                 <string>{64,96}</string>
                 <key>textureRect</key>
-                <string>{{0,480},{64,96}}</string>
+                <string>{{674,0},{64,96}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -104,13 +119,13 @@
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
-            <string>idle.png</string>
+            <string>melee_attack.png</string>
             <key>size</key>
-            <string>{64,576}</string>
+            <string>{738,96}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:24d4332f6245e0a182f5eb985fcf66d3:cd36e815e5d7bea2c3298855d7b0e8a7:917f08b16c21adbead6303a7c10c595b$</string>
+            <string>$TexturePacker:SmartUpdate:f33f6577f89b73fbfa71814a66130bd4:2194d83e410ea18a7ecb42405cf4e435:aade3f2dd99a695727e98e0a2988c382$</string>
             <key>textureFileName</key>
-            <string>idle.png</string>
+            <string>melee_attack.png</string>
         </dict>
     </dict>
 </plist>

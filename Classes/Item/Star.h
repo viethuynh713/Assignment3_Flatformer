@@ -9,6 +9,7 @@ public:
 	~Star();
 	void applyEffect(Player* i_player) override;
 
+	void StarChange(Player* i_player);
 	void LivesChange(Player* i_player);
 	void SpeedChange(Player* i_player);
 };

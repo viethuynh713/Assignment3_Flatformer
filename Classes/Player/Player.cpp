@@ -1,20 +1,22 @@
 #include "Player.h"
 #include "PlayerAttackContext.h"
 #define MAX_HP  100;
-#define INIT_POSITION Vec2(0,0)
+#define INIT_POSITION Vec2(80 * 1, 80 * 24)
 
 Player::Player()
 {
 	this->m_lives = 0;
 	this->m_HP = MAX_HP;
 	this->m_coin = 0;
+	this->m_star = 0;
 	this->m_jumpForce = 100;
 	this->m_speed = 5;
 	//this->m_hixBox = Rect::setRect((float)0, (float)0, (float)100, (float)100);
+	this->m_prevMoveDirection = MoveDirection::NONE;
 	this->m_moveDirection = MoveDirection::NONE;
 	this->m_position = INIT_POSITION;
 	this->m_playerAttackContext = std::make_unique<PlayerAttackContext>();
-	this->m_timeNoDie = 1;
+	this->m_canGetDmg = true;
 	this->m_isJumping = false;
 	this->m_isSitting = false;
 	this->m_isAttacking = false;
@@ -32,9 +34,9 @@ Player::Player()
 	// play animation
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Player/Idle/idle.plist");
 	auto frames = getAnimation("SNinja_idle%01d.png", 6);
+	auto animation = getAnimate("Player/Idle/idle.plist", "SNinja_idle%01d.png", 6);
 	spriteAnimation = Sprite::createWithSpriteFrame(frames.front());
 	this->addChild(spriteAnimation);
-	auto animation = Animation::createWithSpriteFrames(frames, 1.0f / 6);
 	spriteAnimation->runAction(RepeatForever::create(Animate::create(animation)));
 
 	// create physics
@@ -47,6 +49,25 @@ Player::Player()
 	this->setAnchorPoint(Vec2(0, 0));
 	this->setPosition(cocos2d::Vec2(tileSizeWidth * 1, tileSizeHeight * 24));
 	spriteAnimation->setPosition(this->getContentSize().width / 2, this->getContentSize().height / 2);
+
+	// create GUI
+	std::stringstream ss;
+	ss << "HP: " << m_HP;
+	hpText = Label::createWithTTF(ss.str(), "fonts/Marker Felt.ttf", 24);
+	hpText->setTextColor(cocos2d::Color4B::RED);
+	hpText->setPosition(Vec2(120, 700));
+
+	ss.str("");
+	ss << "Coin: " << m_coin;
+	coinText = Label::createWithTTF(ss.str(), "fonts/Marker Felt.ttf", 24);
+	coinText->setTextColor(cocos2d::Color4B::YELLOW);
+	coinText->setPosition(Vec2(640, 700));
+
+	ss.str("");
+	ss << "Star: " << m_star;
+	starText = Label::createWithTTF(ss.str(), "fonts/Marker Felt.ttf", 24);
+	starText->setTextColor(cocos2d::Color4B::WHITE);
+	starText->setPosition(Vec2(1100, 700));
 }
 
 Player::~Player()
@@ -55,14 +76,25 @@ Player::~Player()
 
 void Player::loop()
 {
+	cocos2d::Animation* animation;
 	switch (this->m_moveDirection)
 	{
 	case MoveDirection::LEFT:
-		this->setFlippedX(true);
+		if (m_prevMoveDirection != MoveDirection::LEFT) {
+			spriteAnimation->stopAllActions();
+		}
+		animation = getAnimate("Player/Idle/idle_left.plist", "SNinja_idle_left%01d.png", 6);
+		m_prevMoveDirection = m_moveDirection;
+		spriteAnimation->runAction(RepeatForever::create(Animate::create(animation)));
 		this->runAction(MoveBy::create(0.2, Vec2(-m_speed, 0)));
 		break;
 	case MoveDirection::RIGHT:
-		this->setFlippedX(false);
+		if (m_prevMoveDirection != MoveDirection::RIGHT) {
+			spriteAnimation->stopAllActions();
+		}
+		animation = getAnimate("Player/Idle/idle.plist", "SNinja_idle%01d.png", 6);
+		m_prevMoveDirection = m_moveDirection;
+		spriteAnimation->runAction(RepeatForever::create(Animate::create(animation)));
 		this->runAction(MoveBy::create(0.2, Vec2(m_speed, 0)));
 		break;
 	case MoveDirection::UP:
@@ -111,10 +143,7 @@ void Player::attack()
 	spriteAnimation->stopAllActions();
 	auto attack = Animate::create(attackAnimation);
 
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Player/Idle/idle.plist");
-	auto frames = getAnimation("SNinja_idle%01d.png", 6);
-	auto sprite = Sprite::createWithSpriteFrame(frames.front());
-	auto animation = Animation::createWithSpriteFrames(frames, 1.0f / 6);
+	auto animation = getAnimate("Player/Idle/idle.plist", "SNinja_idle%01d.png", 6);
 	auto idle = RepeatForever::create(Animate::create(animation));
 
 	auto callbackAttack = CallFunc::create([this]() {
@@ -147,20 +176,29 @@ void Player::changeWeapon()
 
 void Player::changeHP(int dental)
 {
-	this->m_HP -= dental;
-	if (m_HP > 100)m_HP = 100;
-	if (m_HP <= 0)
-	{
-		if (this->m_lives - 1 <= 0)
+	if (m_canGetDmg) {
+		m_canGetDmg = false;
+		this->m_HP -= dental;
+		if (m_HP > 100)m_HP = 100;
+		if (m_HP <= 0)
 		{
-			this->die();
+			if (this->m_lives - 1 <= 0)
+			{
+				this->die();
+			}
+			else
+			{
+				this->m_lives--;
+				this->m_HP = MAX_HP;
+				this->m_position = INIT_POSITION;
+			}
 		}
-		else
-		{
-			this->m_lives--;
-			this->m_HP = MAX_HP;
-			this->m_position = INIT_POSITION;
-		}
+		auto callbackCanGetDmg = CallFunc::create([this]() {
+			m_canGetDmg = true;
+		});
+		cocos2d::DelayTime* delay = cocos2d::DelayTime::create(3);
+		this->runAction(Sequence::create(delay, callbackCanGetDmg, nullptr));
+		setHPText();
 	}
 }
 
@@ -219,6 +257,11 @@ void Player::addSpeed()
 	m_speed += 10;
 }
 
+void Player::addStar() {
+	m_star++;
+	setStarText();
+}
+
 int Player::getNKey() {
 	return nKey;
 }
@@ -241,8 +284,47 @@ int Player::getHP() {
 	return m_HP;
 }
 
+cocos2d::Label* Player::getHPText() {
+	return hpText;
+}
+
+cocos2d::Label* Player::getCoinText() {
+	return coinText;
+}
+
+cocos2d::Label* Player::getStarText() {
+	return starText;
+}
+
+void Player::setHPText() {
+	std::stringstream ss;
+	ss << "HP: " << m_HP;
+	hpText->setString(ss.str());
+}
+
+void Player::setCoinText() {
+	std::stringstream ss;
+	ss << "Coin: " << m_coin;
+	coinText->setString(ss.str());
+}
+
+void Player::setStarText() {
+	std::stringstream ss;
+	ss << "Star: " << m_star;
+	starText->setString(ss.str());
+}
+
 cocos2d::EventListenerKeyboard* Player::getListenerKeyboard() {
 	return listenerKeyboard;
+}
+
+cocos2d::Animation* Player::getAnimate(const std::string& plist, const char* format, int count)
+{
+	cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile(plist);
+	auto frames = getAnimation(format, count);
+	auto sprite = cocos2d::Sprite::createWithSpriteFrame(frames.front());
+	auto animation = cocos2d::Animation::createWithSpriteFrames(frames, 1.0f / count);
+	return animation;
 }
 
 Vector<SpriteFrame*> Player::getAnimation(const char* format, int count)

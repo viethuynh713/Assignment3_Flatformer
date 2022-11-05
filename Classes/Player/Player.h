@@ -16,6 +16,7 @@ public:
 	void onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event);
 	void addLive();
 	void addSpeed();
+	void addStar();
 	int getNKey();
 	void addKey(int nKeyAdd);
 	void removeKey(int nKeyRemove);
@@ -24,6 +25,12 @@ public:
 	cocos2d::EventListenerKeyboard* getListenerKeyboard();
 
 	void resetJumpState();
+	cocos2d::Label* getHPText();
+	cocos2d::Label* getCoinText();
+	cocos2d::Label* getStarText();
+	void setHPText();
+	void setCoinText();
+	void setStarText();
 private:
 	enum State {
 		JUMPING,
@@ -36,10 +43,12 @@ private:
 	cocos2d::Vec2 m_position;
 	RECT m_hixBox;
 	float m_speed;
+	MoveDirection m_prevMoveDirection;
 	MoveDirection m_moveDirection;
 	int m_coin;
+	int m_star;
 	std::unique_ptr<PlayerAttackContext> m_playerAttackContext;
-	float m_timeNoDie;
+	bool m_canGetDmg;
 	float m_jumpForce;
 	bool m_isSitting;
 	bool m_isJumping;
@@ -51,7 +60,11 @@ private:
 	cocos2d::EventListenerKeyboard* listenerKeyboard;
 
 	cocos2d::Sprite* spriteAnimation;
+	cocos2d::Label* hpText;
+	cocos2d::Label* coinText;
+	cocos2d::Label* starText;
 
 	void jump();
+	cocos2d::Animation* getAnimate(const std::string& plist, const char* format, int count);
 	Vector<SpriteFrame*> getAnimation(const char* format, int count);
 };

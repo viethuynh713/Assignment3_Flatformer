@@ -7,12 +7,19 @@ GameController::GameController()
 {
 	m_mapManager = new MapManager();
 	this->addChild(m_mapManager, 0);
+
 	m_enemyManager = new EnemyManager();
 	this->m_mapManager->addChild(m_enemyManager, 1);
+
 	m_itemManager = new ItemManager();
 	this->m_mapManager->addChild(m_itemManager, 0);
+
 	m_player = new Player();
 	this->m_mapManager->addChild(m_player, 1);
+	this->addChild(m_player->getHPText(), 2);
+	this->addChild(m_player->getCoinText(), 2);
+	this->addChild(m_player->getStarText(), 2);
+
 	sceneWorld = nullptr;
 
 	auto sampleTile = Sprite::create("sprite/ground/ground_top.png");
@@ -27,12 +34,6 @@ GameController::GameController()
 	m_enemyManager->AddEnemy(new Enemy(cocos2d::Vec2(tileSizeWidth * 28, tileSizeHeight * 1)));
 	m_enemyManager->AddEnemy(new Enemy(cocos2d::Vec2(tileSizeWidth * 31, tileSizeHeight * 1)));
 	m_enemyManager->AddEnemy(new Enemy(cocos2d::Vec2(tileSizeWidth * 8, tileSizeHeight * 8)));
-
-	std::stringstream ss;
-	ss << (m_player->getHP());
-	auto hpText = Label::createWithTTF(ss.str(), "fonts/Marker Felt.ttf", 24);
-	hpText->setPosition(m_mapManager->getPosition() + Vec2(640, 700));
-	this->addChild(hpText, 2);
 
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(m_player->getListenerKeyboard(), this);
 

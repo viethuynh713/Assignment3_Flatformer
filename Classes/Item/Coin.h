@@ -2,10 +2,14 @@
 
 #include "Item.h"
 #include "cocos2d.h"
+#include "Enviroment/TileNode.h"
 
-class Coin : public Item{
+class Coin : public TileNode{
 public:
 	Coin();
+	Coin(float x, float y);
 	~Coin();
-	void applyEffect(Player* i_player) override;
+	void doInteract(Player* i_player) override;
+private:
+	bool canCollect;
 };

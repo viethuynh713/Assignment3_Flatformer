@@ -7,6 +7,7 @@
 #include "Door.h"
 #include "Item/Key.h"
 #include "Item/Star.h"
+#include "Item/Coin.h"
 
 USING_NS_CC;
 
@@ -45,6 +46,9 @@ TileNode* TileFactory::getTileNode(char c, float x, float y) {
     }
     else if (c == '>') {
         tile = new Trap(x, y, 90);
+    }
+    else if (c == '*') {
+        tile = new Coin(x, y);
     }
     else if (c == '$' || c == '}') {
         auto rewardList = std::vector<Item*>();

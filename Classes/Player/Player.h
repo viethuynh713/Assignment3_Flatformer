@@ -17,6 +17,7 @@ public:
 	void addLive();
 	void addSpeed();
 	void addStar();
+	void addCoin();
 	int getNKey();
 	void addKey(int nKeyAdd);
 	void removeKey(int nKeyRemove);

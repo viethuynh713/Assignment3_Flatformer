@@ -268,6 +268,11 @@ void Player::addSpeed()
 	m_speed += 10;
 }
 
+void Player::addCoin() {
+	m_coin++;
+	setCoinText();
+}
+
 void Player::addStar() {
 	m_star++;
 	setStarText();

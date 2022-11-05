@@ -18,8 +18,14 @@ void PlayerAttackContext::SetStrategy(std::string i_strategy)
 
 cocos2d::Animation* PlayerAttackContext::ExecuteStategy(const cocos2d::Vec2& i_position, const MoveDirection& i_moveDirection)
 {
-	cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile("Player/Attack/NormalAttack/melee_attack.plist");
-	auto frames = getAnimation("SNinja_Atk%01d.png", 7);
+	std::string plist = "Player/Attack/NormalAttack/melee_attack.plist";
+	char* png = "SNinja_Atk%01d.png";
+	if (i_moveDirection == MoveDirection::LEFT) {
+		plist = "Player/Attack/NormalAttack/melee_attack_left.plist";
+		png = "SNinja_Atk_left%01d.png";
+	}
+	cocos2d::SpriteFrameCache::getInstance()->addSpriteFramesWithFile(plist);
+	auto frames = getAnimation(png, 7);
 	auto sprite = cocos2d::Sprite::createWithSpriteFrame(frames.front());
 	auto animation = cocos2d::Animation::createWithSpriteFrames(frames, 1.0f / 7);
 	return animation;

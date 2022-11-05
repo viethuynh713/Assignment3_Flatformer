@@ -66,13 +66,15 @@ void GameController::Play()
 }
 
 void GameController::update(float dt) {
-	m_player->loop();
-	m_enemyManager->checkCollide(m_player);
-	m_mapManager->checkCollide(m_player);
-	if (m_enemyManager->isNoEnemy()) {
-		EndGame();
-		unscheduleUpdate();
-	}
+    if (state == PLAYING) {
+        m_player->loop();
+        m_enemyManager->checkCollide(m_player);
+        m_mapManager->checkCollide(m_player);
+        if (m_enemyManager->isNoEnemy()) {
+            EndGame();
+            unscheduleUpdate();
+        }
+    }
 }
 
 void GameController::EndGame()

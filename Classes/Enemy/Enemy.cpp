@@ -5,6 +5,7 @@ Enemy::Enemy(cocos2d::Vec2 pos)
 {
     m_id = rand() % 51;
     this->initWithFile("Enemy/Golem/golemIdle.png");
+
     this->setAnchorPoint(Vec2(0, 0));
     this->setPosition(pos);
 	dmg = 5;

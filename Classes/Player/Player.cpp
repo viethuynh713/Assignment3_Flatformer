@@ -80,22 +80,26 @@ void Player::loop()
 	switch (this->m_moveDirection)
 	{
 	case MoveDirection::LEFT:
-		if (m_prevMoveDirection != MoveDirection::LEFT) {
-			spriteAnimation->stopAllActions();
+		if (!m_isAttacking) {
+			if (m_prevMoveDirection != MoveDirection::LEFT) {
+				spriteAnimation->stopAllActions();
+			}
+			animation = getAnimate("Player/Idle/idle_left.plist", "SNinja_idle_left%01d.png", 6);
+			m_prevMoveDirection = m_moveDirection;
+			spriteAnimation->runAction(RepeatForever::create(Animate::create(animation)));
+			this->runAction(MoveBy::create(0.2, Vec2(-m_speed, 0)));
 		}
-		animation = getAnimate("Player/Idle/idle_left.plist", "SNinja_idle_left%01d.png", 6);
-		m_prevMoveDirection = m_moveDirection;
-		spriteAnimation->runAction(RepeatForever::create(Animate::create(animation)));
-		this->runAction(MoveBy::create(0.2, Vec2(-m_speed, 0)));
 		break;
 	case MoveDirection::RIGHT:
-		if (m_prevMoveDirection != MoveDirection::RIGHT) {
-			spriteAnimation->stopAllActions();
+		if (!m_isAttacking) {
+			if (m_prevMoveDirection != MoveDirection::RIGHT) {
+				spriteAnimation->stopAllActions();
+			}
+			animation = getAnimate("Player/Idle/idle.plist", "SNinja_idle%01d.png", 6);
+			m_prevMoveDirection = m_moveDirection;
+			spriteAnimation->runAction(RepeatForever::create(Animate::create(animation)));
+			this->runAction(MoveBy::create(0.2, Vec2(m_speed, 0)));
 		}
-		animation = getAnimate("Player/Idle/idle.plist", "SNinja_idle%01d.png", 6);
-		m_prevMoveDirection = m_moveDirection;
-		spriteAnimation->runAction(RepeatForever::create(Animate::create(animation)));
-		this->runAction(MoveBy::create(0.2, Vec2(m_speed, 0)));
 		break;
 	case MoveDirection::UP:
 		
@@ -139,7 +143,7 @@ void Player::resetJumpState() {
 
 void Player::attack()
 {
-	auto attackAnimation = this->m_playerAttackContext->ExecuteStategy(this->m_position, this->m_moveDirection);
+	auto attackAnimation = this->m_playerAttackContext->ExecuteStategy(this->m_position, this->m_prevMoveDirection);
 	spriteAnimation->stopAllActions();
 	auto attack = Animate::create(attackAnimation);
 

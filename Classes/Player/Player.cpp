@@ -146,12 +146,22 @@ void Player::attack()
 	auto animation = getAnimate("Player/Idle/idle.plist", "SNinja_idle%01d.png", 6);
 	auto idle = RepeatForever::create(Animate::create(animation));
 
-	auto callbackAttack = CallFunc::create([this]() {
+	auto attackSample = Sprite::create("Player/Attack/NormalAttack/SNinja_Atk1.png");
+	float attackWidth = attackSample->getContentSize().width;
+	auto idleSample = Sprite::create("Player/Idle/SNinja_idle1.png");
+	float idleWidth = idleSample->getContentSize().width;
+
+	auto callbackReadyToAttack = CallFunc::create([this, attackWidth]() {
+		m_isAttacking = true;
+		setContentSize(cocos2d::Size(attackWidth, getContentSize().height));
+	});
+
+	auto callbackAttack = CallFunc::create([this, idleWidth]() {
+		setContentSize(cocos2d::Size(idleWidth, getContentSize().height));
 		m_isAttacking = false;
 	});
 	
-	m_isAttacking = true;
-	auto seq = Sequence::create(attack, callbackAttack, idle, nullptr);
+	auto seq = Sequence::create(callbackReadyToAttack, attack, callbackAttack, idle, nullptr);
 	spriteAnimation->runAction(seq);
 }
 
@@ -249,7 +259,8 @@ void Player::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 
 void Player::addLive()
 {
-	m_lives += 10;
+	//m_lives += 10;
+	changeHP(-10);
 }
 
 void Player::addSpeed()

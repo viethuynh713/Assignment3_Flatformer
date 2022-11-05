@@ -7,6 +7,12 @@ Enemy::Enemy(cocos2d::Vec2 pos)
     this->initWithFile("Enemy/Golem/golemIdle.png");
     this->setAnchorPoint(Vec2(0, 0));
     this->setPosition(pos);
+	dmg = 5;
+
+	auto moveRight = MoveBy::create(2, Vec2(160, 0));
+	auto moveLeft = MoveBy::create(2, Vec2(-160, 0));
+	auto move = Sequence::create(moveRight, moveLeft, nullptr);
+	this->runAction(RepeatForever::create(move));
 }
 
 Enemy::~Enemy()
@@ -23,6 +29,7 @@ void Enemy::attack()
 
 void Enemy::move()
 {
+
 }
 
 void Enemy::canAttack(const Player& i_player)
@@ -37,6 +44,10 @@ bool Enemy::isAttacked(Player* player) {
 		return true;
 	}
 	return false;
+}
+
+int Enemy::getDmg() {
+	return dmg;
 }
 
 //bool operator==(Enemy& i_enemy, Enemy& o_enemy)

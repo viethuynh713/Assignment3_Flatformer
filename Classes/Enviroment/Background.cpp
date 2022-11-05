@@ -39,8 +39,11 @@ void Background::destroy() {
 }
 
 void Background::doInteract(Player* player) {
-	if (isKey) {
-		player->addKey(1);
+	if (canDestroy && player->isAttack()) {
+		if (coverKey) {
+			player->changeHP(-10);
+			player->addKey(1);
+		}
 		this->removeFromParentAndCleanup(true);
 	}
 }

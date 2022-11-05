@@ -12,6 +12,7 @@ public:
 	void AddEnemy(Enemy* i_enemy);
 	void generateEnemy();
 	void checkCollide(Player* player);
+	bool isNoEnemy();
 private:
 	std::vector<Enemy*> m_enemys;
 

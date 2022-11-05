@@ -20,6 +20,7 @@ Player::Player()
 	this->m_isJumping = false;
 	this->m_isSitting = false;
 	this->m_isAttacking = false;
+	isPlaying = true;
 	listenerKeyboard = EventListenerKeyboard::create();
 	listenerKeyboard->onKeyPressed = CC_CALLBACK_2(Player::onKeyPressed, this);
 	listenerKeyboard->onKeyReleased = CC_CALLBACK_2(Player::onKeyReleased, this);
@@ -126,7 +127,7 @@ void Player::loop()
 }
 
 void Player::jump() {
-	if (!m_isJumping) {
+	if (!m_isJumping && isPlaying) {
 		physicsBody->setVelocity(Vec2(0, 200));
 		m_isJumping = true;
 		cocos2d::DelayTime* delay = cocos2d::DelayTime::create(2);
@@ -332,6 +333,10 @@ void Player::setStarText() {
 	std::stringstream ss;
 	ss << "Star: " << m_star;
 	starText->setString(ss.str());
+}
+
+void Player::setIsPlaying(bool isPlaying) {
+	this->isPlaying = isPlaying;
 }
 
 cocos2d::EventListenerKeyboard* Player::getListenerKeyboard() {

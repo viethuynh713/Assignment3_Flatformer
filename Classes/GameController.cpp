@@ -89,15 +89,18 @@ void GameController::Restart()
 {
     //m_player = new Player();
     state = PLAYING;
+    m_player->setIsPlaying(true);
 }
 
 void GameController::Pause()
 {
     state = PAUSE;
+    m_player->setIsPlaying(false);
 }
 void GameController::Resume()
 {
     state = PLAYING;
+    m_player->setIsPlaying(true);
 }
 void GameController::setPhysicsWorld(cocos2d::PhysicsWorld* world) {
 	sceneWorld = world;

@@ -32,6 +32,7 @@ public:
 	void setHPText();
 	void setCoinText();
 	void setStarText();
+	void setIsPlaying(bool isPlaying);
 private:
 	enum State {
 		JUMPING,
@@ -59,6 +60,8 @@ private:
 	int nKey;
 	cocos2d::PhysicsBody* physicsBody;
 	cocos2d::EventListenerKeyboard* listenerKeyboard;
+
+	bool isPlaying;
 
 	cocos2d::Sprite* spriteAnimation;
 	cocos2d::Label* hpText;

@@ -65,6 +65,7 @@ list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/Game.cpp
 	 Classes/GameController.cpp
+
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
